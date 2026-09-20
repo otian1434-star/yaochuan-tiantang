@@ -1,0 +1,316 @@
+{
+  "sections": {
+    "announcements": {
+      "eyebrow": "ANNOUNCEMENTS",
+      "title": "最新公告",
+      "buttonText": "查看全部公告",
+      "buttonUrl": "pages/news.html"
+    },
+    "quickLinks": {
+      "eyebrow": "QUICK NAVIGATION",
+      "title": "快速目錄"
+    },
+    "serverInfo": {
+      "eyebrow": "SERVER INFO",
+      "title": "伺服器資訊"
+    },
+    "updates": {
+      "eyebrow": "PATCH NOTES",
+      "title": "更新歷程",
+      "buttonText": "查看完整歷程",
+      "buttonUrl": "pages/updates.html"
+    }
+  },
+  "quickLinks": [
+    {
+      "icon": "📥",
+      "title": "遊戲下載",
+      "description": "主程式下載",
+      "url": "pages/download.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🔧",
+      "title": "版本設定",
+      "description": "伺服器倍率",
+      "url": "pages/version.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "📋",
+      "title": "更新歷程",
+      "description": "版本更新紀錄",
+      "url": "pages/updates.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🎉",
+      "title": "活動公告",
+      "description": "限時活動",
+      "url": "pages/events.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "⚔️",
+      "title": "遊戲特色",
+      "description": "職業與系統",
+      "url": "pages/features-overview.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "👹",
+      "title": "BOSS介紹",
+      "description": "世界王時刻表",
+      "url": "pages/boss-schedule.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "⚔️",
+      "title": "武器介紹",
+      "description": "武器導覽",
+      "url": "pages/weapons-overview.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🛡️",
+      "title": "防具介紹",
+      "description": "防具導覽",
+      "url": "pages/armor-overview.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🎒",
+      "title": "道具介紹",
+      "description": "完整道具列表",
+      "url": "pages/items-overview.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🧸",
+      "title": "娃娃介紹",
+      "description": "魔法娃娃",
+      "url": "pages/dolls-guide.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🎭",
+      "title": "變身介紹",
+      "description": "變身圖鑑",
+      "url": "pages/transform-guide.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🗺️",
+      "title": "地圖介紹",
+      "description": "地圖說明",
+      "url": "pages/map.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "💎",
+      "title": "贊助說明",
+      "description": "贊助方案",
+      "url": "pages/sponsor.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "❓",
+      "title": "常見問題",
+      "description": "FAQ",
+      "url": "pages/faq.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "📢",
+      "title": "推文說明",
+      "description": "推文獎勵",
+      "url": "pages/promo.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "🎥",
+      "title": "直播說明",
+      "description": "直播合作",
+      "url": "pages/stream.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "📄",
+      "title": "免責聲明",
+      "description": "規章制度",
+      "url": "pages/disclaimer.html",
+      "highlight": false,
+      "visible": true
+    },
+    {
+      "icon": "📝",
+      "title": "申辦帳號",
+      "description": "立即加入",
+      "url": "register.html",
+      "highlight": true,
+      "visible": true
+    }
+  ],
+  "serverCards": [
+    {
+      "title": "曜川天堂 07/09",
+      "subtitle": "MAIN SERVER · 3.81 內掛版",
+      "rows": [
+        {
+          "label": "版本",
+          "value": "3.81 內掛版",
+          "highlight": true
+        },
+        {
+          "label": "經驗倍率",
+          "value": "× 3（內掛 × 1）",
+          "highlight": true
+        },
+        {
+          "label": "掉落倍率",
+          "value": "× 1",
+          "highlight": true
+        },
+        {
+          "label": "金幣倍率",
+          "value": "× 1",
+          "highlight": true
+        },
+        {
+          "label": "多開限制",
+          "value": "IP 限制 3 開",
+          "highlight": false
+        },
+        {
+          "label": "角色限制",
+          "value": "每帳號可創 4 隻",
+          "highlight": false
+        },
+        {
+          "label": "公頻發話",
+          "value": "Lv.10 以上",
+          "highlight": false
+        },
+        {
+          "label": "密語發話",
+          "value": "Lv.5 以上",
+          "highlight": false
+        }
+      ]
+    },
+    {
+      "title": "曜川愛神服 07/18",
+      "subtitle": "MAIN SERVER · 3.81 內掛版",
+      "rows": [
+        {
+          "highlight": true,
+          "label": "版本",
+          "value": "3.81 內掛版"
+        },
+        {
+          "highlight": true,
+          "label": "經驗倍率",
+          "value": "× 4.2（內掛 × 1）後追至08/06調降"
+        },
+        {
+          "highlight": true,
+          "label": "掉落倍率",
+          "value": "× 1.4 後追至08/06調降"
+        },
+        {
+          "highlight": true,
+          "label": "金幣倍率",
+          "value": "× 1.4 後追至08/06調降"
+        },
+        {
+          "highlight": false,
+          "label": "多開限制",
+          "value": "IP 限制 3 開"
+        },
+        {
+          "highlight": false,
+          "label": "角色限制",
+          "value": "每帳號可創 4 隻"
+        },
+        {
+          "highlight": false,
+          "label": "公頻發話",
+          "value": "Lv.10 以上"
+        },
+        {
+          "highlight": false,
+          "label": "密語發話",
+          "value": "Lv.5 以上"
+        }
+      ]
+    },
+    {
+      "title": "曜川美神服 07/30",
+      "subtitle": "MAIN SERVER · 3.81 內掛版",
+      "rows": [
+        {
+          "highlight": true,
+          "label": "版本",
+          "value": "3.81 內掛版"
+        },
+        {
+          "highlight": true,
+          "label": "倍率設定",
+          "value": "07/30～08/13"
+        },
+        {
+          "highlight": true,
+          "label": "經驗倍率",
+          "value": "× 6.6（內掛 × 1）"
+        },
+        {
+          "highlight": true,
+          "label": "掉落倍率",
+          "value": "× 2.2"
+        },
+        {
+          "highlight": true,
+          "label": "金幣倍率",
+          "value": "× 2.2"
+        },
+        {
+          "highlight": false,
+          "label": "多開限制",
+          "value": "IP 限制 3 開"
+        },
+        {
+          "highlight": false,
+          "label": "角色限制",
+          "value": "每帳號可創 4 隻"
+        },
+        {
+          "highlight": false,
+          "label": "公頻發話",
+          "value": "Lv.10 以上"
+        },
+        {
+          "highlight": false,
+          "label": "密語發話",
+          "value": "Lv.5 以上"
+        }
+      ]
+    }
+  ],
+  "updates": []
+}

@@ -1,0 +1,250 @@
+backend:
+  name: github
+  repo: otian1434-star/my-gas-link
+  branch: main
+  base_url: https://yaowu-cms-oauth.otian1434.workers.dev
+  auth_endpoint: auth
+
+local_backend: true
+locale: zh_Hant
+media_folder: assets/uploads
+public_folder: /my-gas-link/assets/uploads
+
+collections:
+  - name: site_data
+    label: 網站內容
+    files:
+      - name: posts
+        label: 文章管理（新增網站文章）
+        file: data/posts.json
+        fields:
+          - label: 文章
+            name: posts
+            widget: list
+            summary: "{{fields.date}} [{{fields.category}}] {{fields.title}}"
+            hint: 新增文章請在這個「文章」清單按新增。儲存發布後，文章會自動出現在首頁「最新公告」與「最新文章」頁；分類選「更新」時，也會同步出現在首頁「更新歷程」與「更新歷程」完整頁。
+            fields:
+              - { label: 標題, name: title, widget: string }
+              - label: 分類
+                name: category
+                widget: select
+                options: [公告, 活動, 更新, 規章, 攻略, 下載, 制裁名單]
+                default: 公告
+              - label: 版面樣式
+                name: layout
+                widget: select
+                options:
+                  - { label: 標準文章, value: standard }
+                  - { label: 重點公告, value: featured }
+                  - { label: 簡短公告, value: compact }
+                default: standard
+              - { label: 日期, name: date, widget: datetime, format: "YYYY/MM/DD", date_format: "YYYY/MM/DD", time_format: false }
+              - { label: 顯示在網站, name: published, widget: boolean, default: true }
+              - { label: 置頂, name: pinned, widget: boolean, default: false }
+              - { label: 活動狀態, name: status, widget: select, options: [進行中, 已結束], default: 進行中, required: false, hint: "僅活動公告頁使用；活動結束改成「已結束」即可，會變灰並自動排到清單最下方，不必刪除。" }
+              - { label: 封面圖片, name: coverImage, widget: image, required: false }
+              - { label: 摘要, name: excerpt, widget: text, required: false }
+              - label: 文章內文
+                name: body
+                widget: yaowu_markdown
+                hint: 建議優先在這裡發文。上方按鈕與範本會輸出官方統一風格，右側可切換桌面/手機預覽；分類為「更新」的文章會同步成更新歷程內容。
+              - label: 自訂 HTML 區塊
+                name: customHtml
+                widget: code
+                default_language: html
+                allow_language_selection: false
+                required: false
+                hint: 進階排版使用。一般發文不必填這裡；若要貼入 div、table、iframe 或特殊版面，請使用 cms-grid、cms-panel、cms-callout、cms-button 等官方 class，並只讓可信任管理者使用。
+      - name: home
+        label: 首頁底板管理（目錄/伺服器資訊/更新歷程）
+        file: data/home.json
+        fields:
+          - label: 區塊標題
+            name: sections
+            widget: object
+            fields:
+              - label: 最新公告區塊
+                name: announcements
+                widget: object
+                fields:
+                  - { label: 小字標題, name: eyebrow, widget: string, required: false }
+                  - { label: 大標題, name: title, widget: string }
+                  - { label: 按鈕文字, name: buttonText, widget: string, required: false }
+                  - { label: 按鈕連結, name: buttonUrl, widget: string, required: false }
+              - label: 快速目錄區塊
+                name: quickLinks
+                widget: object
+                fields:
+                  - { label: 小字標題, name: eyebrow, widget: string, required: false }
+                  - { label: 大標題, name: title, widget: string }
+              - label: 伺服器資訊區塊
+                name: serverInfo
+                widget: object
+                fields:
+                  - { label: 小字標題, name: eyebrow, widget: string, required: false }
+                  - { label: 大標題, name: title, widget: string }
+              - label: 更新歷程區塊
+                name: updates
+                widget: object
+                fields:
+                  - { label: 小字標題, name: eyebrow, widget: string, required: false }
+                  - { label: 大標題, name: title, widget: string }
+                  - { label: 按鈕文字, name: buttonText, widget: string, required: false }
+                  - { label: 按鈕連結, name: buttonUrl, widget: string, required: false }
+          - label: 快速目錄卡片
+            name: quickLinks
+            widget: list
+            summary: "{{fields.title}} → {{fields.url}}"
+            fields:
+              - { label: 顯示, name: visible, widget: boolean, default: true }
+              - { label: 圖示, name: icon, widget: string, hint: 可填 emoji，例如 📥 或 ⚔️ }
+              - { label: 標題, name: title, widget: string }
+              - { label: 說明文字, name: description, widget: string, required: false }
+              - { label: 連結, name: url, widget: string }
+              - { label: 重點卡片, name: highlight, widget: boolean, default: false }
+          - label: 伺服器資訊卡片
+            name: serverCards
+            widget: list
+            summary: "{{fields.title}}"
+            hint: 這裡控制首頁「伺服器資訊」區塊。你截圖中的「最新更新」卡片也是這裡的卡片；要刪除或新增卡片，請在此清單操作。
+            fields:
+              - { label: 標題, name: title, widget: string }
+              - { label: 副標題, name: subtitle, widget: string, required: false }
+              - label: 內容列
+                name: rows
+                widget: list
+                summary: "{{fields.label}}：{{fields.value}}"
+                fields:
+                  - { label: 左側文字, name: label, widget: string }
+                  - { label: 右側內容, name: value, widget: string }
+                  - { label: 金色強調, name: highlight, widget: boolean, default: false }
+          - label: 更新歷程清單
+            name: updates
+            widget: list
+            summary: "{{fields.date}} [{{fields.tag}}] {{fields.content}}"
+            hint: 這裡是簡短更新條列的補充區。若要發布完整更新內容，請到「文章管理」新增文章並將分類設為「更新」，系統會自動同步到首頁「更新歷程」與完整頁。
+            fields:
+              - { label: 顯示, name: visible, widget: boolean, default: true }
+              - { label: 日期, name: date, widget: datetime, format: "YYYY/MM/DD", date_format: "YYYY/MM/DD", time_format: false }
+              - { label: 標籤, name: tag, widget: string }
+              - { label: 標題, name: title, widget: string, required: false }
+              - { label: 內容, name: content, widget: text }
+  - name: site_settings
+    label: 站台設定
+    editor:
+      preview: false
+    files:
+      - name: settings
+        label: 站台設定（音樂／連結／Hero／倍率／彈窗）
+        file: data/site.json
+        fields:
+          - { label: 論壇短名稱, name: forumName, widget: string }
+          - { label: 論壇完整名稱, name: forumFullName, widget: string, required: false }
+          - { label: 標語, name: forumSlogan, widget: string, required: false }
+          - { label: 遊戲版本, name: serverVersion, widget: string, required: false }
+          - { label: Hero 主標, name: heroTitle, widget: string, required: false }
+          - { label: Hero 副標, name: heroSubTitle, widget: string, required: false }
+          - { label: Hero 背景影片路徑, name: heroVideo, widget: string, required: false, hint: "站內路徑，如 assets/media/hero-bg.mp4" }
+          - { label: Hero 角色圖路徑, name: heroImage, widget: string, required: false, hint: "站內路徑，如 assets/media/hero-characters.png" }
+          - { label: 品牌 LOGO 路徑, name: brandLogo, widget: string, required: false }
+          - { label: LINE 官方客服連結, name: lineOfficial, widget: string, required: false }
+          - { label: 玩家討論區連結, name: lineCommunity, widget: string, required: false }
+          - { label: 贊助頁連結, name: sponsorUrl, widget: string, required: false }
+          - { label: 客服 LINE ID, name: lineId, widget: string, required: false }
+          - { label: 管理團隊名稱, name: teamName, widget: string, required: false }
+          - label: Hero 倍率徽章
+            name: heroBadges
+            widget: list
+            field: { label: 徽章文字, name: badge, widget: string }
+          - label: 遊戲下載連結
+            name: download
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 主下載, name: mainUrl, widget: string, required: false }
+              - { label: 備載 RAR, name: backup1, widget: string, required: false }
+              - { label: 備載 7Z, name: backup2, widget: string, required: false }
+              - { label: 備載 ZIP, name: backup3, widget: string, required: false }
+              - { label: 合併補丁, name: patchUrl, widget: string, required: false }
+              - { label: 更新日期, name: updateDate, widget: string, required: false }
+              - { label: AnyDesk 連結, name: anyDeskUrl, widget: string, required: false }
+          - label: 浮動快捷視窗
+            name: floatingPanel
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 啟用, name: enabled, widget: boolean, default: true }
+              - { label: 標題, name: title, widget: string, required: false }
+              - { label: 說明, name: note, widget: string, required: false }
+              - label: 連結清單
+                name: links
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: 圖示, name: icon, widget: string, hint: "可填文字或 emoji，如 💬、LINE、DL" }
+                  - { label: 名稱, name: label, widget: string }
+                  - { label: 連結, name: url, widget: string }
+                  - { label: 樣式, name: style, widget: select, options: [line, gold, blue, dark], default: dark }
+          - label: 左右側懸浮圖片
+            name: sideBanners
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 啟用, name: enabled, widget: boolean, default: true }
+              - label: 左側
+                name: left
+                widget: object
+                fields:
+                  - { label: 圖片路徑, name: image, widget: string, required: false }
+                  - { label: 連結, name: url, widget: string, required: false }
+                  - { label: 替代文字, name: alt, widget: string, required: false }
+              - label: 右側
+                name: right
+                widget: object
+                fields:
+                  - { label: 圖片路徑, name: image, widget: string, required: false }
+                  - { label: 連結, name: url, widget: string, required: false }
+                  - { label: 替代文字, name: alt, widget: string, required: false }
+          - label: 背景音樂播放器
+            name: musicPlayer
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 啟用, name: enabled, widget: boolean, default: true }
+              - { label: 標題, name: title, widget: string, required: false }
+              - { label: 自動播放, name: autoplay, widget: boolean, default: true }
+              - { label: 整列循環, name: loop, widget: boolean, default: true }
+              - { label: 隨機播放, name: shuffle, widget: boolean, default: true }
+              - { label: 預設音量(0~1), name: volume, widget: number, value_type: float, min: 0, max: 1, step: 0.05, default: 0.7 }
+              - label: 歌曲清單
+                name: tracks
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: 歌名, name: title, widget: string }
+                  - { label: 演出者, name: artist, widget: string, required: false }
+                  - { label: 音檔路徑, name: url, widget: string, hint: "站內路徑，如 assets/media/music/music0.mp3" }
+                  - { label: 封面圖路徑, name: cover, widget: string, required: false }
+          - label: 彈窗公告
+            name: popup
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 啟用, name: enabled, widget: boolean, default: false }
+              - { label: 標題, name: title, widget: string, required: false }
+              - { label: 內容, name: content, widget: text, required: false, hint: "可使用 <br>、<strong> 等 HTML" }
+              - { label: 按鈕文字, name: btnText, widget: string, required: false }
+              - { label: 按鈕連結, name: btnUrl, widget: string, required: false }
+              - { label: 每次瀏覽只顯示一次, name: showOnce, widget: boolean, default: true }
+          - label: 申辦帳號表單
+            name: registrationForm
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 收件方式, name: provider, widget: select, options: [auto, appsScript, netlify], default: auto }
+              - label: Apps Script
+                name: appsScript
+                widget: object
+                fields:
+                  - { label: 端點網址, name: endpoint, widget: string, required: false }
+                  - { label: Token, name: token, widget: string, required: false }

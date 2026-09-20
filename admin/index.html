@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/media/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/media/apple-touch-icon.png">
+  <meta name="theme-color" content="#17332d">
+  <title>網站後台</title>
+  <link rel="stylesheet" href="./admin-gate.css">
+  <link rel="stylesheet" href="./formatting-widget.css">
+</head>
+<body>
+  <main class="admin-gate" id="admin-gate">
+    <form class="admin-gate-card" id="admin-gate-form" autocomplete="off">
+      <div class="admin-gate-mark">曜</div>
+      <p class="admin-gate-eyebrow">ADMIN ACCESS</p>
+      <h1>曜川天堂後台</h1>
+      <p class="admin-gate-copy">請輸入管理密語後再進入網站後台。</p>
+      <label class="admin-gate-field">
+        <span>管理密語</span>
+        <input id="admin-gate-password" type="password" inputmode="text" autocomplete="current-password" required>
+      </label>
+      <p class="admin-gate-error" id="admin-gate-error" role="alert"></p>
+      <button class="admin-gate-button" type="submit">進入後台</button>
+      <a class="admin-gate-home" href="../">返回官方網站</a>
+    </form>
+  </main>
+  <script src="./admin-gate.js"></script>
+</body>
+</html>

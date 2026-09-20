@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/media/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/media/apple-touch-icon.png">
+<meta name="theme-color" content="#17332d">
+<title>最新文章 - 曜川天堂</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="../config.js"></script>
+</head>
+<body>
+
+<div id="header-slot"></div>
+<div id="nav-slot"></div>
+
+<div id="main-wrap">
+  <div id="page-content">
+    <div class="page-hdr">
+      <h1>最新文章</h1>
+      <p>後台發布的公告、活動、更新與攻略文章</p>
+    </div>
+
+    <div id="cms-news-list"></div>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+
+<script src="../assets/js/cms-posts.js"></script>
+<script src="../assets/js/forum.js"></script>
+<script>
+ForumCmsPosts.renderNewsList(document.getElementById('cms-news-list'));
+</script>
+</body>
+</html>

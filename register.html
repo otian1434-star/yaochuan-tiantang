@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/media/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/media/apple-touch-icon.png">
+<meta name="theme-color" content="#17332d">
+<title>申辦帳號 - 曜川天堂</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="config.js"></script>
+</head>
+<body class="register-page">
+
+<div id="header-slot"></div>
+<div id="nav-slot"></div>
+
+<div id="main-wrap">
+  <div id="page-content">
+
+    <div class="page-hdr">
+      <h1>📝 申辦帳號</h1>
+      <p>填寫申請資料後，管理員將會確認並與您聯繫</p>
+    </div>
+
+    <div class="notice blue" style="margin-bottom:20px;">
+      🔒 <strong>個人資料保護聲明：</strong><br>
+      <span>資料只做帳號審核與客服聯繫，不公開顯示。</span>
+    </div>
+
+    <div class="reg-wrap">
+      <div class="content-card register-notes">
+        <h3>📌 申請注意事項</h3>
+        <ul>
+          <li>預先登入，每人限制申請一組帳號</li>
+          <li>請確認電子信箱及手機號碼填寫正確</li>
+          <li>提交後請耐心等候，管理員審核通常在 24 小時內完成</li>
+          <li>申請後，官方會幫您預先創角色，配點統一為遊戲預設值 1</li>
+        </ul>
+      </div>
+
+      <!-- 申辦表單 -->
+      <div class="content-card" id="reg-form-area">
+        <h3>✍️ 填寫申請資料</h3>
+
+        <form id="reg-form" name="account-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="regSubmit(event)">
+          <input type="hidden" name="form-name" value="account-application">
+          <p style="display:none;">
+            <label>請勿填寫此欄位 <input name="bot-field"></label>
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-server">伺服器選擇 <span style="color:#ff6464;">*</span></label>
+            <select class="form-input" id="reg-server" name="serverName" required>
+              <option value="">— 請選擇伺服器 —</option>
+              <option value="曜川天堂主服">曜川天堂主服</option>
+              <option value="曜川天堂太陽神服">曜川天堂太陽神服</option>
+              <option value="曜川天堂愛神服">曜川天堂愛神服</option>
+              <option value="曜川天堂美神服">曜川天堂美神服 07/30</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-account">遊戲帳號 <span style="color:#ff6464;">*</span></label>
+            <input class="form-input" type="text" id="reg-account" name="gameAccount"
+                   placeholder="請輸入欲申請的遊戲帳號" required maxlength="20" autocomplete="username">
+            <div class="form-hint">⚠️ 請勿使用信箱格式作為遊戲帳號</div>
+            <div class="field-status" id="reg-account-status" aria-live="polite"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">遊戲密碼 <span style="color:#ff6464;">*</span></label>
+            <div class="pw-field">
+              <input class="form-input" type="password" id="reg-password" name="gamePassword"
+                     placeholder="請輸入欲設定的遊戲密碼" required minlength="4" maxlength="10" autocomplete="new-password">
+              <button type="button" class="pw-toggle" id="reg-password-toggle"
+                      onclick="toggleRegPassword()" aria-label="顯示密碼" aria-pressed="false" title="顯示／隱藏密碼">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17a5 5 0 110-10 5 5 0 010 10zm0-8a3 3 0 100 6 3 3 0 000-6z"/></svg>
+              </button>
+            </div>
+            <div class="form-hint">🔐 勿超過 10 碼，建議不要使用與其他網站相同的密碼</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-name">暱稱 <span style="color:#ff6464;">*</span></label>
+            <input class="form-input" type="text" id="reg-name" name="playerName"
+                   placeholder="請輸入您在遊戲中使用的暱稱" required maxlength="20">
+            <div class="field-status" id="reg-name-status" aria-live="polite"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">職業與性別 <span style="color:#ff6464;">*</span></label>
+            <input type="hidden" id="reg-character-choice" name="characterChoice" required>
+            <div class="class-choice-grid" id="reg-character-grid">
+              <label class="class-choice"><input type="checkbox" data-character-choice value="王族-男"><span>王族 男</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="王族-女"><span>王族 女</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="騎士-男"><span>騎士 男</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="騎士-女"><span>騎士 女</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="妖精-男"><span>妖精 男</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="妖精-女"><span>妖精 女</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="法師-男"><span>法師 男</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="法師-女"><span>法師 女</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="黑妖-男"><span>黑妖 男</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="黑妖-女"><span>黑妖 女</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="幻術-男"><span>幻術 男</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="幻術-女"><span>幻術 女</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="龍騎-男"><span>龍騎 男</span></label>
+              <label class="class-choice"><input type="checkbox" data-character-choice value="龍騎-女"><span>龍騎 女</span></label>
+            </div>
+            <div class="form-hint">請勾選 1 個職業與性別</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">電子信箱 <span style="color:#ff6464;">*</span></label>
+            <input class="form-input" type="email" id="reg-email" name="email"
+                   placeholder="example@gmail.com" required>
+            <div class="form-hint">📧 此信箱用於接收官方通知，請確認可正常收信</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">手機號碼 <span style="color:#ff6464;">*</span></label>
+            <input class="form-input" type="tel" id="reg-phone" name="phone"
+                   placeholder="0912-345-678" required
+                   pattern="[0-9\-\s]{9,15}">
+            <div class="form-hint">📱 此手機號碼為保密存取，僅管理員可查閱</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-lineid">LINE ID</label>
+            <input class="form-input" type="text" id="reg-lineid" name="lineId"
+                   placeholder="您的 LINE ID（選填）" maxlength="50" autocomplete="off">
+            <div class="form-hint">💬 方便管理員透過 LINE 與您聯繫，可留空</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-how">如何得知本伺服器</label>
+            <select class="form-input" id="reg-how" name="source">
+              <option value="">— 請選擇 —</option>
+              <option value="抖音">抖音</option>
+              <option value="私服123">私服123</option>
+              <option value="FB社團">Facebook 社團推文</option>
+              <option value="朋友介紹">朋友介紹</option>
+              <option value="YouTube">YouTube 影片</option>
+              <option value="直播">直播</option>
+              <option value="其他">其他</option>
+            </select>
+          </div>
+
+          <!-- 驗證碼 -->
+          <div class="form-group">
+            <label class="form-label">驗證碼 <span style="color:#ff6464;">*</span></label>
+            <div class="captcha-row" style="margin-bottom:10px;">
+              <div class="captcha-display" id="captcha-display"></div>
+              <button type="button" class="captcha-btn" onclick="refreshCaptcha()" title="刷新驗證碼">🔄</button>
+            </div>
+            <input class="form-input" type="text" id="reg-captcha" placeholder="請輸入上方驗證碼"
+                   required autocomplete="off" maxlength="6">
+            <div class="form-hint">🤖 請輸入圖中的英數字，不區分大小寫</div>
+          </div>
+
+          <button type="submit" class="form-submit" id="reg-submit-btn">
+            ✅ 送出申請
+          </button>
+        </form>
+
+        <!-- 送出成功畫面 -->
+        <div id="reg-success" style="display:none;text-align:center;padding:30px 0;">
+          <div style="font-size:48px;margin-bottom:16px;">🎉</div>
+          <div style="font-size:20px;color:var(--gold-bright);font-weight:900;margin-bottom:12px;">申請已送出！</div>
+          <div style="color:var(--text-muted);line-height:2;font-size:14px;">
+            感謝您的申請！<br>
+            管理員將在 24 小時內審核，並透過信箱或 LINE@ 通知您。<br><br>
+            如有急迫問題，可直接聯繫官方 LINE@ 客服。
+          </div>
+          <a href="#" id="reg-line-btn" style="display:inline-block;margin-top:20px;background:var(--green-line);color:#18201e;padding:12px 28px;border-radius:8px;font-weight:bold;">
+            加入官方 LINE@
+          </a>
+        </div>
+      </div>
+
+      <div class="notice gold" style="text-align:center;">
+        🎮 若想直接加入遊戲，可先至
+        <a href="pages/download.html" style="color:var(--gold-bright);font-weight:bold;">遊戲下載</a>
+        頁面取得最新懶人包，遊戲帳號可於登入介面直接創建！
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+
+<script src="assets/js/forum.js"></script>
+<script>
+// ── 驗證碼邏輯 ──────────────────────────────────────────────
+var _captchaCode = '';
+
+function genCaptcha() {
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var code = '';
+  for (var i = 0; i < 5; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+function refreshCaptcha() {
+  _captchaCode = genCaptcha();
+  document.getElementById('captcha-display').textContent = _captchaCode;
+}
+
+// ── 密碼顯示/隱藏 ────────────────────────────────────────────
+function toggleRegPassword() {
+  var input = document.getElementById('reg-password');
+  var btn = document.getElementById('reg-password-toggle');
+  if (!input || !btn) return;
+  var show = input.type === 'password';
+  input.type = show ? 'text' : 'password';
+  btn.classList.toggle('is-on', show);
+  btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+  btn.setAttribute('aria-label', show ? '隱藏密碼' : '顯示密碼');
+}
+
+function encodeFormData(form) {
+  return new URLSearchParams(new FormData(form)).toString();
+}
+
+function getCharacterChoice() {
+  var checked = document.querySelector('[data-character-choice]:checked');
+  return checked ? checked.value : '';
+}
+
+function syncCharacterChoice() {
+  var hidden = document.getElementById('reg-character-choice');
+  if (hidden) hidden.value = getCharacterChoice();
+}
+
+function registrationFormConfig() {
+  var C = typeof FORUM_CONFIG !== 'undefined' ? FORUM_CONFIG : {};
+  var reg = C.registrationForm || {};
+  var app = reg.appsScript || {};
+  return {
+    provider: reg.provider || 'netlify',
+    endpoint: app.endpoint || '',
+    token: app.token || '',
+  };
+}
+
+function appsScriptReady(settings) {
+  return !!(settings.endpoint && /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(settings.endpoint));
+}
+
+// ── 重複檢查（用 JSONP 才讀得到 Apps Script 回應，避開跨網域限制）──────
+var _checkSeq = 0;
+function jsonpCheck(params, cb) {
+  var settings = registrationFormConfig();
+  if (!appsScriptReady(settings)) { cb(null); return; }
+  var cbName = '__regCheck' + (++_checkSeq);
+  var script = document.createElement('script');
+  var done = false;
+  var timer = setTimeout(function () { finish(null); }, 8000);
+  function finish(data) {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    try { delete window[cbName]; } catch (e) { window[cbName] = undefined; }
+    if (script.parentNode) script.parentNode.removeChild(script);
+    cb(data);
+  }
+  window[cbName] = function (data) { finish(data); };
+  var qs = [];
+  Object.keys(params).forEach(function (k) {
+    qs.push(encodeURIComponent(k) + '=' + encodeURIComponent(params[k]));
+  });
+  qs.push('callback=' + cbName);
+  script.src = settings.endpoint + '?' + qs.join('&');
+  script.onerror = function () { finish(null); };
+  document.head.appendChild(script);
+}
+
+function setFieldStatus(fieldId, text, kind) {
+  var el = document.getElementById(fieldId + '-status');
+  if (!el) return;
+  el.textContent = text || '';
+  el.className = 'field-status' + (kind ? ' is-' + kind : '');
+}
+
+// 帳號 / 暱稱失焦時即時查重
+function checkRegField(which) {
+  var settings = registrationFormConfig();
+  if (!appsScriptReady(settings)) return;          // 沒接 Apps Script 就不檢查
+  var fieldId = which === 'account' ? 'reg-account' : 'reg-name';
+  var val = (document.getElementById(fieldId).value || '').trim();
+  if (!val) { setFieldStatus(fieldId, '', ''); return; }
+  var query = which === 'account' ? { action: 'check', account: val } : { action: 'check', name: val };
+  setFieldStatus(fieldId, '檢查中…', 'checking');
+  jsonpCheck(query, function (data) {
+    if (!data || !data.ok) { setFieldStatus(fieldId, '', ''); return; }  // 檢查失敗就不顯示，避免誤判
+    var taken = which === 'account' ? data.accountTaken : data.nameTaken;
+    if (taken) {
+      setFieldStatus(fieldId, which === 'account' ? '✗ 此遊戲帳號已被使用，請換一個' : '✗ 此暱稱已被使用，請換一個', 'bad');
+    } else {
+      setFieldStatus(fieldId, '✓ 可以使用', 'ok');
+    }
+  });
+}
+
+function normalizePhoneNumber(value) {
+  var phone = (value || '').trim();
+  var digits = phone.replace(/[^\d]/g, '');
+  if (/^9\d{8}$/.test(digits)) return '0' + digits;
+  return phone;
+}
+
+function buildApplicationPayload(form, settings) {
+  var data = new FormData();
+  data.append('gameAccount', form.gameAccount.value.trim());
+  data.append('gamePassword', form.gamePassword.value);
+  data.append('playerName', form.playerName.value.trim());
+  data.append('characterChoice', form.characterChoice.value);
+  data.append('serverName', form.serverName ? form.serverName.value : '');
+  data.append('email', form.email.value.trim());
+  data.append('phone', normalizePhoneNumber(form.phone.value));
+  data.append('lineId', form.lineId ? form.lineId.value.trim() : '');
+  data.append('source', form.source.value || '');
+  data.append('submittedAt', new Date().toISOString());
+  data.append('pageUrl', window.location.href);
+  if (settings.token) data.append('token', settings.token);
+  return data;
+}
+
+function submitToAppsScript(form, settings) {
+  if (!appsScriptReady(settings)) {
+    return Promise.reject(new Error('Apps Script endpoint is not configured'));
+  }
+
+  return fetch(settings.endpoint, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: buildApplicationPayload(form, settings),
+  });
+}
+
+function submitToNetlify(form) {
+  return fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encodeFormData(form),
+  }).then(function (res) {
+    if (!res.ok) throw new Error('Form submit failed');
+  });
+}
+
+function showSubmitError(message) {
+  var btn = document.getElementById('reg-submit-btn');
+  btn.disabled = false;
+  btn.textContent = '✅ 送出申請';
+  alert(message || '送出失敗，請稍後再試，或直接聯繫官方 LINE@。');
+}
+
+// ── 表單提交 ─────────────────────────────────────────────────
+function regSubmit(e) {
+  e.preventDefault();
+  var input = document.getElementById('reg-captcha').value.toUpperCase().trim();
+  if (input !== _captchaCode) {
+    alert('驗證碼錯誤，請重新輸入！');
+    refreshCaptcha();
+    document.getElementById('reg-captcha').value = '';
+    return;
+  }
+  syncCharacterChoice();
+  if (!getCharacterChoice()) {
+    alert('請勾選職業與性別！');
+    return;
+  }
+
+  var btn = document.getElementById('reg-submit-btn');
+  btn.disabled = true;
+  btn.textContent = '檢查中…';
+
+  var form = document.getElementById('reg-form');
+  var settings = registrationFormConfig();
+  var account = form.gameAccount.value.trim();
+  var playerName = form.playerName.value.trim();
+
+  // 送出前最後一次查重（僅在有接 Apps Script 時）
+  if (appsScriptReady(settings)) {
+    jsonpCheck({ action: 'check', account: account, name: playerName }, function (data) {
+      if (data && data.ok && (data.accountTaken || data.nameTaken)) {
+        if (data.accountTaken) setFieldStatus('reg-account', '✗ 此遊戲帳號已被使用，請換一個', 'bad');
+        if (data.nameTaken) setFieldStatus('reg-name', '✗ 此暱稱已被使用，請換一個', 'bad');
+        var msg = (data.accountTaken && data.nameTaken) ? '遊戲帳號與暱稱都已被使用，請更換後再送出。'
+                : data.accountTaken ? '此遊戲帳號已被使用，請更換後再送出。'
+                : '此暱稱已被使用，請更換後再送出。';
+        showSubmitError(msg);
+        return;
+      }
+      doActualSubmit(form, settings);  // 通過、或檢查失敗（讀不到）都照常送出，避免誤殺
+    });
+  } else {
+    doActualSubmit(form, settings);
+  }
+}
+
+function doActualSubmit(form, settings) {
+  var C = FORUM_CONFIG;
+  document.getElementById('reg-submit-btn').textContent = '送出中…';
+  var useAppsScript = settings.provider === 'appsScript' || (settings.provider === 'auto' && appsScriptReady(settings));
+
+  (useAppsScript ? submitToAppsScript(form, settings) : submitToNetlify(form)).then(function () {
+    document.getElementById('reg-form').style.display = 'none';
+    document.getElementById('reg-success').style.display = 'block';
+    document.getElementById('reg-line-btn').href = C.lineOfficial;
+  }).catch(function () {
+    showSubmitError();
+  });
+}
+
+// ── 初始化 ───────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  refreshCaptcha();
+
+  // 帳號 / 暱稱：失焦時查重，重新編輯時清掉舊狀態
+  var accEl = document.getElementById('reg-account');
+  var nameEl = document.getElementById('reg-name');
+  if (accEl) {
+    accEl.addEventListener('blur', function () { checkRegField('account'); });
+    accEl.addEventListener('input', function () { setFieldStatus('reg-account', '', ''); });
+  }
+  if (nameEl) {
+    nameEl.addEventListener('blur', function () { checkRegField('name'); });
+    nameEl.addEventListener('input', function () { setFieldStatus('reg-name', '', ''); });
+  }
+
+  document.querySelectorAll('[data-character-choice]').forEach(function (checkbox) {
+    checkbox.addEventListener('change', function () {
+      if (checkbox.checked) {
+        document.querySelectorAll('[data-character-choice]').forEach(function (other) {
+          if (other !== checkbox) other.checked = false;
+        });
+      }
+      syncCharacterChoice();
+    });
+  });
+});
+</script>
+
+</body>
+</html>
