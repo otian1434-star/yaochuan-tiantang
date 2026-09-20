@@ -138,6 +138,8 @@ button { color: inherit; font: inherit; }
 .feature-list p { max-width: 650px; margin: 0; color: var(--ink-soft); font-size: 13px; }
 .feature-list li > b { color: rgba(24,32,30,.22); font-size: 10px; letter-spacing: .24em; text-align: right; }
 
+.feature-grid-wrap a:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(24,32,30,.1); }
+
 .news-section { padding: 130px max(48px, calc((100vw - 1240px) / 2)); background: var(--copper); color: var(--cream); }
 .news-inner { display: grid; grid-template-columns: 190px 1fr auto; gap: 20px; align-items: start; }
 .news-inner .section-no { color: rgba(243,239,230,.7); }

@@ -675,47 +675,42 @@ img { max-width: 100%; display: block; }
 .ann-card-more { font-size: 11px; color: var(--gold); margin-top: 11px; letter-spacing: 1px; }
 
 /* 目錄格子 */
-/* 目錄網格 — 編輯式清單 */
+/* 目錄網格 — 紙張方格卡片 */
 .dir-grid {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--white);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 14px;
 }
 .dir-card {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  grid-template-rows: auto auto;
-  align-items: center;
-  gap: 0 16px;
-  padding: 18px 8px;
-  border-bottom: 1px solid var(--border);
-  text-align: left;
-  transition: background .2s, padding-left .2s;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  padding: 22px 16px;
+  text-align: center;
+  transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   text-decoration: none;
 }
 .dir-card::before { display: none; }
 .dir-card:hover {
-  background: rgba(23,51,45,0.04);
-  padding-left: 14px;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(24,32,30,0.1);
+  border-color: var(--gold);
 }
-.dir-card:hover::after {
-  content: '→';
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--gold);
-  font-size: 16px;
-  transition: transform .2s;
+.dir-card.highlight {
+  background: linear-gradient(180deg, rgba(23,51,45,0.06), transparent), var(--bg3);
+  border-top-color: var(--crimson);
 }
-.dir-card.highlight { background: none; border-color: var(--border); }
-.dir-card.highlight:hover { background: rgba(23,51,45,0.04); }
-.dir-icon { grid-row: 1 / -1; font-size: 22px; filter: none; text-align: center; align-self: center; }
-.dir-name { grid-column: 2; font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; color: var(--white); letter-spacing: .06em; line-height: 1.4; }
-.dir-desc { grid-column: 2; font-size: 12px; color: var(--text-dim); letter-spacing: .02em; line-height: 1.5; }
-.category-menu-grid { margin-top: 12px; }
+.dir-card.highlight:hover { border-color: var(--crimson); }
+.dir-icon { font-size: 28px; filter: none; margin-bottom: 2px; }
+.dir-name { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: .05em; line-height: 1.4; }
+.dir-desc { font-size: 11px; color: var(--text-dim); letter-spacing: .02em; line-height: 1.5; }
+.category-menu-grid { margin-top: 18px; }
 
 /* 更新列表 — 清單 */
 .update-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--white); }
@@ -950,11 +945,11 @@ img { max-width: 100%; display: block; }
 ══════════════════════════════════════ */
 /* 內容卡片 — 紙張段落風格 */
 .content-card {
-  background: var(--bg);
-  border: none;
-  border-top: 1px solid var(--white);
-  padding: 32px 0;
-  margin-bottom: 0;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold-dark);
+  padding: 28px 30px;
+  margin-bottom: 18px;
   position: relative;
 }
 .content-card::before { display: none; }
@@ -5580,7 +5575,7 @@ img { max-width: 100%; display: block; }
   .hero-brand-logo { width: 132px; margin-bottom: 12px; }
   .hero-title { font-size: 42px; }
   .hero-tagline { font-size: 13px; letter-spacing: 1px; }
-  .dir-card { grid-template-columns: 36px 1fr; gap: 0 10px; padding: 14px 4px; }
+  .dir-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
