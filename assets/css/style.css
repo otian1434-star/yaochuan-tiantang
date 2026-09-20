@@ -295,30 +295,29 @@ img { max-width: 100%; display: block; }
 }
 #page-content {
   flex: 1;
-  max-width: 900px;
+  max-width: 1160px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 max(24px, calc((100vw - 900px) / 2)) 80px;
+  padding: 0 24px 60px;
 }
 
-/* 內頁標題 — 編輯式 */
+/* 內頁標題 */
 .page-hdr {
   position: relative;
-  text-align: left;
-  padding: 56px 0 28px;
-  border-bottom: 1px solid var(--white);
-  margin-bottom: 40px;
+  text-align: center;
+  padding: 48px 0 34px;
+  border-bottom: none;
+  margin-bottom: 30px;
 }
 .page-hdr::before {
-  content: 'YAOCHUAN';
+  content: '';
   position: absolute;
-  top: 20px;
-  left: 0;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .28em;
-  color: var(--gold);
-  opacity: .7;
+  left: 50%;
+  bottom: 0;
+  width: min(460px, 74vw);
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 .page-hdr h1 {
   font-family: 'Noto Serif TC', serif;
