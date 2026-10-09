@@ -31,9 +31,9 @@ const FORUM_CONFIG = {
     whisper:     "Lv.5 以上",
   },
 
-  // ── 社群連結（尚未設定）──────────────────────────────────────
-  lineOfficial:   "",
-  lineCommunity:  "",
+  // ── 社群連結 ────────────────────────────────────────────────
+  lineOfficial:   "https://lin.ee/OkO4aXi",
+  lineCommunity:  "https://lin.ee/OkO4aXi",
 
   // ── 遊戲下載連結 ────────────────────────────────────────────
   download: {
@@ -55,8 +55,8 @@ const FORUM_CONFIG = {
     title: "曜川快捷",
     note: "官方客服 · 贊助入口 · 下載資訊",
     links: [
-      { label: "玩家討論區", icon: "💬", url: "", style: "line" },
-      { label: "LINE 官方客服", icon: "LINE", url: "", style: "line" },
+      { label: "玩家討論區", icon: "💬", url: "https://lin.ee/OkO4aXi", style: "line" },
+      { label: "LINE 官方客服", icon: "LINE", url: "https://lin.ee/OkO4aXi", style: "line" },
       { label: "贊助連結", icon: "SP", url: "", style: "gold" },
       { label: "遊戲下載", icon: "DL", url: "pages/download.html", style: "blue" },
       { label: "全站搜尋", icon: "查", url: "pages/search.html", style: "dark" },
@@ -69,7 +69,7 @@ const FORUM_CONFIG = {
     enabled: false,
     left: {
       image: "assets/media/side-line-official.png",
-      url: "",
+      url: "https://lin.ee/OkO4aXi",
       alt: "官方 LINE@",
     },
     right: {
@@ -131,7 +131,7 @@ const FORUM_CONFIG = {
                開服禮包 · 全員贈送<br>
                加入官方LINE獲取最新消息`,
     btnText:  "加入官方 LINE@",
-    btnUrl:   "",
+    btnUrl:   "https://lin.ee/OkO4aXi",
     showOnce: true,
   },
 
@@ -149,7 +149,7 @@ const FORUM_CONFIG = {
   ],
 
   // ── 客服資訊 ──────────────────────────────────────────────────
-  lineId:   "",
+  lineId:   "@786jbuhs",
   teamName: "曜川天堂管理團隊",
 };
 
