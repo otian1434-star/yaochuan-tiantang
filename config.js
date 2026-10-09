@@ -35,11 +35,11 @@ const FORUM_CONFIG = {
   lineOfficial:   "",
   lineCommunity:  "",
 
-  // ── 遊戲下載連結（尚未設定）─────────────────────────────────
+  // ── 遊戲下載連結 ────────────────────────────────────────────
   download: {
-    mainUrl:      "",
-    backup1:      "",
-    backup2:      "",
+    mainUrl:      "https://disk.cloud-shield.app/s/LMCX8f",
+    backup1:      "https://disk.cloud-shield.app/s/FM647k",
+    backup2:      "https://drive.google.com/file/d/1Na13cC_jkvpUdwnMPUIDPPhJreVWykE4/view?usp=drive_link",
     backup3:      "",
     patchUrl:     "",
     updateDate:   "",
