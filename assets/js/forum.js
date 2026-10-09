@@ -170,9 +170,6 @@
         <a href="${C.lineOfficial}" target="_blank" rel="noopener" class="btn-line-o">
           LINE<span class="btn-label"> 官方客服</span>
         </a>
-        <a href="${r}register.html" class="btn-register">
-          📝<span class="btn-label"> 申辦帳號</span>
-        </a>
         <button class="btn-hamburger" id="hamburger-btn" onclick="forumToggleMobile()" aria-label="選單">☰</button>
       </div>
     </header>
@@ -257,7 +254,6 @@
       <a class="mob-link mob-sub" href="${r}pages/faq.html">❓ 常見問題</a>
       <a class="mob-link mob-sub" href="${r}pages/promo.html">📜 推文說明</a>
       <a class="mob-link mob-sub" href="${r}pages/stream.html">🎥 直播說明</a>
-      <a class="mob-link" href="${r}register.html">📝 申辦帳號</a>
     </div>`;
 
     const slot = document.getElementById('header-slot');
@@ -344,7 +340,6 @@
             <li><span style="color:var(--text-muted);font-size:12px;">${C.forumSlogan || '曜川天堂'}</span></li>
             ${communityLink ? `<li><a href="${communityLink}" target="_blank" rel="noopener">💬 玩家討論區</a></li>` : ''}
             <li><a href="${C.lineOfficial}" target="_blank" rel="noopener">LINE 官方客服</a></li>
-            <li><a href="${r}register.html">📝 申辦帳號</a></li>
           </ul>
         </div>
         <div>
