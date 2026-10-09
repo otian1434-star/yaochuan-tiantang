@@ -8,8 +8,8 @@
   "heroVideo": "assets/media/hero-bg.mp4",
   "heroImage": "assets/media/hero-characters.png",
   "brandLogo": "assets/media/brand-logo.png",
-  "lineOfficial": "",
-  "lineCommunity": "",
+  "lineOfficial": "https://lin.ee/OkO4aXi",
+  "lineCommunity": "https://lin.ee/OkO4aXi",
   "sponsorUrl": "",
   "download": {
     "mainUrl": "",
@@ -25,8 +25,8 @@
     "title": "曜川快捷",
     "note": "官方客服 · 贊助入口 · 下載資訊",
     "links": [
-      { "label": "玩家討論區", "icon": "💬", "url": "", "style": "line" },
-      { "label": "LINE 官方客服", "icon": "LINE", "url": "", "style": "line" },
+      { "label": "玩家討論區", "icon": "💬", "url": "https://lin.ee/OkO4aXi", "style": "line" },
+      { "label": "LINE 官方客服", "icon": "LINE", "url": "https://lin.ee/OkO4aXi", "style": "line" },
       { "label": "贊助連結", "icon": "SP", "url": "", "style": "gold" },
       { "label": "遊戲下載", "icon": "DL", "url": "pages/download.html", "style": "blue" },
       { "label": "全站搜尋", "icon": "查", "url": "pages/search.html", "style": "dark" },
@@ -35,7 +35,7 @@
   },
   "sideBanners": {
     "enabled": false,
-    "left": { "image": "assets/media/side-line-official.png", "url": "", "alt": "官方 LINE@" },
+    "left": { "image": "assets/media/side-line-official.png", "url": "https://lin.ee/OkO4aXi", "alt": "官方 LINE@" },
     "right": { "image": "assets/media/side-auto-sponsor.png", "url": "", "alt": "自動贊助" }
   },
   "musicPlayer": {
@@ -82,7 +82,7 @@
     "title": "最新公告",
     "content": "<strong>曜川天堂</strong> 即將開服！<br><br><strong>開服時間：</strong>2026/10/09 20:00<br>開服禮包 · 全員贈送<br>加入官方LINE獲取最新消息",
     "btnText": "加入官方 LINE@",
-    "btnUrl": "",
+    "btnUrl": "https://lin.ee/OkO4aXi",
     "showOnce": true
   },
   "heroBadges": [
@@ -93,6 +93,6 @@
     "強化 x2",
     "IP 限制 3 開"
   ],
-  "lineId": "",
+  "lineId": "@786jbuhs",
   "teamName": "曜川天堂管理團隊"
 }
