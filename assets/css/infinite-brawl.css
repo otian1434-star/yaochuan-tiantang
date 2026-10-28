@@ -1,0 +1,12 @@
+/* 無限大亂鬥：依欄位數設定表格寬度，沿用各站配色。 */
+.infinite-brawl-page .content-card { margin-bottom: 22px; }
+.infinite-brawl-page .feature-table { table-layout: auto; }
+.infinite-brawl-page .feature-table th:first-child,
+.infinite-brawl-page .feature-table td:first-child { width: auto; }
+.infinite-brawl-page .brawl-reward-table { min-width: 360px; }
+.infinite-brawl-page .brawl-stats-table { min-width: 960px; }
+.infinite-brawl-page .brawl-craft-table { min-width: 820px; }
+.infinite-brawl-page .brawl-stats-table th,
+.infinite-brawl-page .brawl-stats-table td,
+.infinite-brawl-page .brawl-craft-table th,
+.infinite-brawl-page .brawl-craft-table td { white-space: nowrap; }
