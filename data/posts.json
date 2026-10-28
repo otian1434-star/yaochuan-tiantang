@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "status": "已更新",
+      "category": "更新",
+      "title": "10/28-更新歷程",
+      "excerpt": "奇岩主城新增大亂鬥入場員與大亂鬥證明製作 NPC、每日 20:00 開放大亂鬥，並修正網路跳頻問題。",
+      "pinned": true,
+      "anchor": "update-2026-10-28",
+      "date": "2026/10/28",
+      "layout": "standard",
+      "published": true,
+      "body": "# 10/28 更新歷程\n\n## 1. 奇岩主城新增 NPC\n\n- 大亂鬥入場員\n- 大亂鬥證明製作 NPC\n\n## 2. 新增每日固定活動\n\n- [大亂鬥（活動連結請點）](features-infinite-brawl.html)\n- 活動期間：每日 **20:00**，打完結束。\n\n## 3. 修正網路跳頻問題"
+    },
+    {
       "category": "活動",
       "layout": "standard",
       "published": true,
